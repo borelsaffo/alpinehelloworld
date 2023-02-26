@@ -1,0 +1,69 @@
+My job
+
+
+Shell et Jenkins
+job
+
+#!/bin/bash
+git clone https://github.com/borelsaffo/alpinehelloworld.git
+cd alpinehelloworld 
+doker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+
+
+
+https://plugins.jenkins.io/http_request   installer le plugin dans jenkins  pour faire du http
+
+job
+
+#!/bin/bash
+cd alpinehelloworld 
+doker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} ${IMAGE_NAME}:${IMAGE_TAG}
+
+job
+
+#!/bin/bash
+curl  http://192.168.56.10  | grep -q "helloworld"
+docker stop ${IMAGE_NAME} 
+docker rm ${IMAGE_NAME} 
+
+#!/bin/bash
+docker stop ${IMAGE_NAME} 
+docker rm ${IMAGE_NAME} 
+
+
+job
+
+#!/bin/bash
+cd alpinehelloworld 
+docker build -t 199883/borelsaffo/${IMAGE_NAME}:${IMAGE_TAG} .
+docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo/${IMAGE_NAME}:${IMAGE_TAG}
+sleep 5
+
+
+
+
+Le plugin  docker-build-step      plugins gérer artefact
+
+job
+
+#!/bin/bash
+cd alpinehelloworld 
+docker build -t 199883/borelsaffo:${IMAGE_NAME}-${IMAGE_TAG} .
+docker run -d -p 80:5000 -e PORT=5000 --name ${IMAGE_NAME} 199883/borelsaffo:${IMAGE_NAME}-${IMAGE_TAG}
+sleep 5
+
+creer un compte sur https://heroku.com
+installer plugins github integration    pour géré la parte webhook afin que le pipeline soit executer a chaque modification de code.
+
+
+le plugins : role-basedauthorization strategy permet de géré les utilisateurs et donc de leurs associer des role pour definir ce a quoi il ont accès.
+Le plugin : docker pipeline très important : 
+
+ 
+ouvrire un jinkinsfile. 
+parlant du plugin '' docker pipeline'' essayer d'exécuter les playbook ansible dans mon jenkinsfile
+tel que définit dans le scénario , la partie authentification en SSH pas ok
+
+
+https://plugins.jenkins.io/configuration-as-code/
